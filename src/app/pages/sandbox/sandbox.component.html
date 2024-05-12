@@ -1,0 +1,25 @@
+<div class="container mt-4 text-center">
+    <br><br><h2>Counter</h2><br><br>
+    <div class="row align-items-center text-center">
+      <div class="col">
+        <app-button 
+          text="Decrease"
+          iconClass="bi bi-dash-circle"
+          (somethingHappend)="decreaseCounter()"
+          [isDisabled]="isDisabled()"
+          >
+        </app-button>
+      </div>
+      <div class="col">
+        <h3>{{counter}}</h3>
+      </div>
+      <div class="col">
+        <app-button 
+          text="Increase"
+          iconClass="bi bi-plus-circle"
+          (somethingHappend)="increaseCounter()"
+          >
+        </app-button>
+      </div>
+    </div>  
+  </div>

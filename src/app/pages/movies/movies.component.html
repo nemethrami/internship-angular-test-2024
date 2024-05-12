@@ -1,0 +1,46 @@
+<br>
+<h5>Sort by:</h5>
+<div class="d-flex justify-content-between">
+    <select [(ngModel)]="sortBy" class="form-select">
+        <option value="title">Title</option>
+        <option value="rating">Rating</option>
+        <option value="year">Year</option>
+    </select>
+    <button type="button" class="btn btn-outline-primary" (click)="toggleSortOrder()">
+        <i [class]="sortOrderButtonClass"></i>
+    </button>
+</div>
+<br>
+<ul class="list-group list-group-numbered">
+    <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let movie of movies">
+        <div class="ms-2 me-auto">
+            <img src="{{movie.thumbnail}}" alt="thumbnail">
+            {{movie.title}} ({{movie.year}})
+        </div>
+        <div class="ms-2">
+            {{movie.rating}}
+            <button class="ms-2 me-2 btn btn-light" type="button" (click)="handleDeleteClick(movie.id)"><i class="bi bi-trash3"></i></button>
+            <button class="btn btn-outline-primary" type="button" (click)="openModal(movie)"><i class="bi bi-pencil-square"></i></button>
+        </div>
+    </li>
+</ul>
+<br>
+
+<div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit movie title</h5>
+                <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                New Title: 
+                <input class="form-control" type="text" [(ngModel)]="inputValue">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+                <button type="button" class="btn btn-primary" (click)="handleEditClick()" [disabled]="!inputValue">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
